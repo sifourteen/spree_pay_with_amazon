@@ -7,6 +7,7 @@
 # @license     http://opensource.org/licenses/Apache-2.0  Apache License, Version 2.0
 #
 ##
+#
 class AmazonMwsOrderResponse
   def initialize(response)
     @response = response.fetch("GetOrderReferenceDetailsResponse", {})
