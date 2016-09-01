@@ -9,8 +9,8 @@ Installation
 Add spree_amazon_payments to your Gemfile:
 
 ```
-gem 'spree_social', github: 'spree-contrib/spree_social', branch: '3-0-stable'
-gem 'spree_amazon_payments', github: 'amzn/spree_pay_with_amazon'
+gem 'spree_social', github: 'spree-contrib/spree_social', branch: '3-1-stable'
+gem 'spree_amazon_payments', github: 'sifourteen/spree_pay_with_amazon'
 ```
 
 Bundle your dependencies and run the installation generator:
