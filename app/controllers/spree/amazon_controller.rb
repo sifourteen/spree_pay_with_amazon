@@ -51,8 +51,8 @@ class Spree::AmazonController < Spree::StoreController
       current_order.ship_address_id = spree_address.id
       current_order.bill_address_id = spree_address.id
       current_order.save!
-      current_order.next! # to Address
-      current_order.next! # to Delivery
+      # current_order.next! # to Address
+      # current_order.next! # to Delivery
 
       current_order.reload
     else
