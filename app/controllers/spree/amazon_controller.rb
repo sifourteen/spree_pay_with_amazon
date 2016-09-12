@@ -34,7 +34,6 @@ class Spree::AmazonController < Spree::StoreController
   def delivery
     data = @mws.fetch_order_data
     current_order.state = 'cart'
-
     if data.destination && data.destination["PhysicalDestination"]
       current_order.email = "pending@amazon.com"
       address = data.destination["PhysicalDestination"]
@@ -46,6 +45,7 @@ class Spree::AmazonController < Spree::StoreController
                               "city" => address["City"],
                               "zipcode" => address["PostalCode"],
                               "state_name" => address["StateOrRegion"],
+                              "state_id" => Spree::State.where("abbr = ?", address["StateOrRegion"]).first.id,
                               "country" => Spree::Country.where("iso = ? OR iso_name = ?", address["CountryCode"],address["CountryCode"]).first)
       spree_address.save!
       current_order.ship_address_id = spree_address.id
@@ -99,7 +99,7 @@ class Spree::AmazonController < Spree::StoreController
       @order = current_order
 
       # Remove the following line to enable the confirmation step.
-      redirect_to amazon_order_complete_path(@order)
+      # redirect_to amazon_order_complete_path(@order)
     else
       render :edit
     end
